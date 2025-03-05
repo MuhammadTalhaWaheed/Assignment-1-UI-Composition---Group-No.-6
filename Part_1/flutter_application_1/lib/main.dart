@@ -42,7 +42,7 @@ var pair = appState.current;
       body: Column(
         children: [
           Text('A AWESOME random idea:'),
-          Text(pair.asPascalCase),
+          BigCard(pair: pair),
           ElevatedButton(
             onPressed: () {
              appState.getNext();
@@ -52,5 +52,19 @@ var pair = appState.current;
         ],
       ),
     );
+  }
+}
+
+class BigCard extends StatelessWidget {
+  const BigCard({
+    super.key,
+    required this.pair,
+  });
+
+  final WordPair pair;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(pair.asPascalCase);
   }
 }
