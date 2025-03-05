@@ -37,12 +37,12 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
-
+var pair = appState.current;
     return Scaffold(
       body: Column(
         children: [
           Text('A AWESOME random idea:'),
-          Text(appState.current.asPascalCase),
+          Text(pair.asPascalCase),
           ElevatedButton(
             onPressed: () {
              appState.getNext();
