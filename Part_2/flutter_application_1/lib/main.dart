@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
     name: 'Oeschinen Lake Campground',
     location: 'Kandersteg, Switzerland',
   ),
+  ButtonSection(),//button section added to be used by app
 ],),
         ),
       ),
