@@ -62,3 +62,14 @@ class TitleSection extends StatelessWidget {
     );
   }
 }
+//button section added after the title section
+class ButtonSection extends StatelessWidget {
+  const ButtonSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final Color color = Theme.of(context).primaryColor;
+    // ···
+  }
+
+}
