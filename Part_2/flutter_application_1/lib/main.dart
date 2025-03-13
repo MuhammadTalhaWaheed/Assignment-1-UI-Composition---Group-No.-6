@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       title: appTitle,
       home: Scaffold(
         appBar: AppBar(title: const Text(appTitle)),
-        body: const Center(
+        body: const SingleChildScrollView(
           child: Text('Hello World'),
         ),
       ),
