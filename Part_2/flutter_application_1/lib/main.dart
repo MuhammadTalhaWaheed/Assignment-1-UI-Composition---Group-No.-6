@@ -14,6 +14,9 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(title: const Text(appTitle)),
         body: const SingleChildScrollView(
           child: Column(children: [
+            ImageSection(
+    image: 'images/lake.jpg',
+  ),//Image section added to top of the app
   TitleSection(
     name: 'Oeschinen Lake Campground',
     location: 'Kandersteg, Switzerland',
@@ -129,5 +132,16 @@ class TextSection extends StatelessWidget {
       padding: const EdgeInsets.all(32),
       child: Text(description, softWrap: true),
     );
+  }
+}
+//Image section declared
+class ImageSection extends StatelessWidget {
+  const ImageSection({super.key, required this.image});
+
+  final String image;
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(image, width: 600, height: 240, fit: BoxFit.cover);
   }
 }
