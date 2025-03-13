@@ -63,22 +63,29 @@ class TitleSection extends StatelessWidget {
   }
 }
 //button section added after the title section
-class ButtonSection extends StatelessWidget {
+
+
+  class ButtonSection extends StatelessWidget {
   const ButtonSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     final Color color = Theme.of(context).primaryColor;
-    // ···
+    return SizedBox(
+      //button positioned using row widget
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          ButtonWithText(color: color, icon: Icons.call, label: 'CALL'),
+          ButtonWithText(color: color, icon: Icons.near_me, label: 'ROUTE'),
+          ButtonWithText(color: color, icon: Icons.share, label: 'SHARE'),
+        ],
+      ),
+    );
   }
 
 }
 // widget to create buttons
-class ButtonSection extends StatelessWidget {
-  const ButtonSection({super.key});
-  // ···
-}
-
 class ButtonWithText extends StatelessWidget {
   const ButtonWithText({
     super.key,
@@ -94,21 +101,8 @@ class ButtonWithText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(icon, color: color),
-        Padding(
-          padding: const EdgeInsets.only(top: 8),
-          child: Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: color,
-            ),
-          ),
-        ),
-      ],
+      // ···
     );
   }
+
+}
