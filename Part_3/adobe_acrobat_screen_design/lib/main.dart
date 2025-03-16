@@ -55,9 +55,19 @@ class AcrobatScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Row(
                   children: [
-                    const Text(
-                      'Recent',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    Container(
+                      decoration: const BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Colors.blue,
+                            width: 2.0,
+                          ),
+                        ),
+                      ),
+                      child: const Text(
+                        'Recent',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
                     ),
                     const SizedBox(width: 16), // Two character spaces (approx. 16 pixels)
                     TextButton(
@@ -139,8 +149,10 @@ class AcrobatScreen extends StatelessWidget {
             label: 'Search',
           ),
         ],
+        currentIndex: 0, // Set "Home" as the current selected tab (for demonstration)
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
+        type: BottomNavigationBarType.fixed, // Ensures labels are always visible
         onTap: (_) {}, // No functionality needed
       ),
       floatingActionButton: FloatingActionButton(
@@ -162,7 +174,7 @@ class AcrobatScreen extends StatelessWidget {
       leading: const Icon(Icons.picture_as_pdf, color: Colors.red),
       title: Text(title),
       subtitle: Text(subtitle),
-      trailing: const Icon(Icons.more_vert), // Replaced star with three-dot button
+      trailing: const Icon(Icons.more_vert), // Three-dot button
     );
   }
 }
