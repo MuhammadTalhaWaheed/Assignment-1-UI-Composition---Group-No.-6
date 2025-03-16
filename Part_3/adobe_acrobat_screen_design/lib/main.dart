@@ -40,34 +40,44 @@ class AcrobatScreen extends StatelessWidget {
           ],
         ),
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(40),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Recent',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          preferredSize: const Size.fromHeight(80), // Increased height to accommodate welcome text and tabs
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(left: 16.0, top: 16.0, bottom: 8.0),
+                child: Text(
+                  'Welcome back, Taha',
+                  style: TextStyle(fontSize: 18),
                 ),
-                TextButton(
-                  onPressed: () {}, // No functionality needed
-                  child: const Text('Starred'),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  children: [
+                    const Text(
+                      'Recent',
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                    const SizedBox(width: 16), // Two character spaces (approx. 16 pixels)
+                    TextButton(
+                      onPressed: () {}, // No functionality needed
+                      child: const Text('Starred'),
+                    ),
+                    const Spacer(), // Pushes the three-dot button to the end
+                    IconButton(
+                      icon: const Icon(Icons.more_vert),
+                      onPressed: () {}, // No functionality needed
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
       body: ListView(
         children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 16.0, top: 16.0, bottom: 8.0),
-            child: Text(
-              'Welcome back, Taha',
-              style: TextStyle(fontSize: 18),
-            ),
-          ),
           _buildFileItem(
             title: 'Welcome',
             subtitle: 'PDF • Just now • 212.5 KB',
@@ -136,8 +146,8 @@ class AcrobatScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: Colors.blue,
-        shape: const CircleBorder(), // No functionality needed
-        child: const Icon(Icons.add), // Fully round border
+        shape: const CircleBorder(), // Fully round border
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
@@ -152,10 +162,7 @@ class AcrobatScreen extends StatelessWidget {
       leading: const Icon(Icons.picture_as_pdf, color: Colors.red),
       title: Text(title),
       subtitle: Text(subtitle),
-      trailing: Icon(
-        isStarred ? Icons.star : Icons.star_border,
-        color: isStarred ? Colors.yellow : Colors.grey,
-      ),
+      trailing: const Icon(Icons.more_vert), // Replaced star with three-dot button
     );
   }
 }
