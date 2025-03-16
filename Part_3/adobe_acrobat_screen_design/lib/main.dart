@@ -22,25 +22,27 @@ class AcrobatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Welcome back, Taha'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications_none),
-            onPressed: () {}, // No functionality needed
-          ),
-          IconButton(
-            icon: const CircleAvatar(
-              backgroundColor: Colors.grey,
-              radius: 12,
+        title: Row(
+          children: [
+            Image.asset(
+              'assets/adobe_logo.png',
+              height: 24,
             ),
-            onPressed: () {}, // No functionality needed
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+            const Expanded(child: SizedBox()), // Spacer
+            IconButton(
+              icon: const Icon(Icons.notifications_none),
+              onPressed: () {}, // No functionality needed
+            ),
+            IconButton(
+              icon: const Icon(Icons.person, size: 24), // Default profile icon
+              onPressed: () {}, // No functionality needed
+            ),
+          ],
+        ),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(40),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -52,55 +54,59 @@ class AcrobatScreen extends StatelessWidget {
                   onPressed: () {}, // No functionality needed
                   child: const Text('Starred'),
                 ),
-                const Icon(Icons.more_vert),
               ],
             ),
           ),
-          Expanded(
-            child: ListView(
-              children: [
-                _buildFileItem(
-                  title: 'Welcome',
-                  subtitle: 'PDF • Just now • 212.5 KB',
-                  isStarred: true,
-                ),
-                _buildFileItem(
-                  title: '10Pearls University...U - Flutter Step-up',
-                  subtitle: 'PDF • 8 Feb 2021 • 204.4 KB',
-                  isStarred: false,
-                ),
-                _buildFileItem(
-                  title: 'lecture schdld 21',
-                  subtitle: 'PDF • 5 Feb 2021 • 5.9 MB',
-                  isStarred: false,
-                ),
-                _buildFileItem(
-                  title: 'VenD00599-7',
-                  subtitle: 'PDF • 1 Feb 2021 • 27.0 KB',
-                  isStarred: false,
-                ),
-                _buildFileItem(
-                  title: 'Affan_Resume 2',
-                  subtitle: 'PDF • 25 Jan 2021 • 227.5 KB',
-                  isStarred: false,
-                ),
-                _buildFileItem(
-                  title: 'VenD00599-5',
-                  subtitle: 'PDF • 1 Jan 2021 • 26.9 KB',
-                  isStarred: false,
-                ),
-                _buildFileItem(
-                  title: 'VenD00599-6',
-                  subtitle: 'PDF • 1 Jan 2021 • 26.9 KB',
-                  isStarred: false,
-                ),
-                _buildFileItem(
-                  title: '2020-12-18T00:30:05.876220',
-                  subtitle: 'PDF • 18 Dec 2020 • 32.4 KB',
-                  isStarred: false,
-                ),
-              ],
+        ),
+      ),
+      body: ListView(
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(left: 16.0, top: 16.0, bottom: 8.0),
+            child: Text(
+              'Welcome back, Taha',
+              style: TextStyle(fontSize: 18),
             ),
+          ),
+          _buildFileItem(
+            title: 'Welcome',
+            subtitle: 'PDF • Just now • 212.5 KB',
+            isStarred: true,
+          ),
+          _buildFileItem(
+            title: '10Pearls University...U - Flutter Step-up',
+            subtitle: 'PDF • 8 Feb 2021 • 204.4 KB',
+            isStarred: false,
+          ),
+          _buildFileItem(
+            title: 'lecture schdld 21',
+            subtitle: 'PDF • 5 Feb 2021 • 5.9 MB',
+            isStarred: false,
+          ),
+          _buildFileItem(
+            title: 'VenD00599-7',
+            subtitle: 'PDF • 1 Feb 2021 • 27.0 KB',
+            isStarred: false,
+          ),
+          _buildFileItem(
+            title: 'Affan_Resume 2',
+            subtitle: 'PDF • 25 Jan 2021 • 227.5 KB',
+            isStarred: false,
+          ),
+          _buildFileItem(
+            title: 'VenD00599-5',
+            subtitle: 'PDF • 1 Jan 2021 • 26.9 KB',
+            isStarred: false,
+          ),
+          _buildFileItem(
+            title: 'VenD00599-6',
+            subtitle: 'PDF • 1 Jan 2021 • 26.9 KB',
+            isStarred: false,
+          ),
+          _buildFileItem(
+            title: '2020-12-18T00:30:05.876220',
+            subtitle: 'PDF • 18 Dec 2020 • 32.4 KB',
+            isStarred: false,
           ),
         ],
       ),
@@ -129,8 +135,9 @@ class AcrobatScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        backgroundColor: Colors.blue, // No functionality needed
-        child: const Icon(Icons.add),
+        backgroundColor: Colors.blue,
+        shape: const CircleBorder(), // No functionality needed
+        child: const Icon(Icons.add), // Fully round border
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
@@ -145,9 +152,10 @@ class AcrobatScreen extends StatelessWidget {
       leading: const Icon(Icons.picture_as_pdf, color: Colors.red),
       title: Text(title),
       subtitle: Text(subtitle),
-      trailing: isStarred
-          ? const Icon(Icons.star, color: Colors.yellow)
-          : const Icon(Icons.star_border, color: Colors.grey),
+      trailing: Icon(
+        isStarred ? Icons.star : Icons.star_border,
+        color: isStarred ? Colors.yellow : Colors.grey,
+      ),
     );
   }
 }
